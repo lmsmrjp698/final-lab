@@ -1,0 +1,42 @@
+---
+instances:
+  - name: frontend1
+    keypair: 3fad-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: 3fad-HostSG
+    internal_network: 3fad-dev-network
+    metadata:
+      AnsibleGroup: fronedn_servers
+      deployment_name: prod
+
+  - name: app1
+    keypair: 3fad-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: 3fad-HostSG
+    internal_network: 3fad-dev-network
+    metadata:
+      AnsibleGroup: app_servers
+      deployment_name: prod
+
+  - name: app2
+    keypair: 3fad-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: 3fad-HostSG
+    internal_network: 3fad-dev-network
+    metadata:
+      AnsibleGroup: app_servers
+      deployment_name: prod
+
+  - name: appdb1
+    keypair: 3fad-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: 3fad-HostSG
+    internal_network: 3fad-dev-network
+    metadata:
+      AnsibleGroup: appdb_servers
+      deployment_name: prod
+

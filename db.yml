@@ -1,0 +1,25 @@
+---
+- name: Deploy, configure, and populate Postgres 12
+  hosts: database_servers
+  become: true
+  gather_facts: false
+  tags:
+    - database_servers
+
+  tasks:
+    - debug:
+        msg: "Start PostgreSQL 12 setup"
+
+    - name: Setup firewall
+      include_role:
+        name: firewall
+      vars:
+        firewall_tcp_ports:
+          - 5432
+
+    - name: Setup PostgreSQL 12 server
+      include_role:
+        name: postgres
+
+    - debug:
+        msg: "Finished PostgreSQL 12 setup"

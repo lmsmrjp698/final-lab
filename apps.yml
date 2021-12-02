@@ -1,0 +1,30 @@
+---
+- name: Deploy, configure, and populate flask repo and virtualenv
+  hosts: app_servers
+  become: true
+  gather_facts: false
+  tags:
+    - application_servers
+    - flask
+
+  tasks:
+    - debug:
+        msg: "Start App server setup"
+
+    - name: Setup firewall
+      include_role:
+        name: firewall
+      vars:
+        firewall_services:
+          - http
+        firewall_tcp_ports:
+          - 8080
+
+    - name: Setup app server
+      include_role:
+        name: app_servers
+
+    - debug:
+        msg: "Finished App server setup"
+
+

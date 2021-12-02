@@ -1,0 +1,8 @@
+---
+# handlers file for roles/postres
+
+- name: restart_postgres
+  service:
+    name: "{{ postgres_service }}"
+    state: restarted
+
